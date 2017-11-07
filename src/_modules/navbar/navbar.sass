@@ -1,0 +1,147 @@
+//color variables
+$white: #ffffff
+$bg: #1A2930
+$first-project: #FDE366
+$second-project: #FF3B3F
+$third-project: #CB87EF
+$fourth-project: #4EC5C1
+
+// about me default size
+$about-me-height: 570px
+// navbar styles
+
+section.banner
+  padding: 5em 1em
+  h1
+    color: $bg
+    text-align: right
+    font-size: 5em
+    display: inline
+    float: right
+    margin: 0
+  // ABOUT ME morphing content
+.aboutMe
+  position: absolute
+  z-index: 1000
+  right: 20%
+    // hide the checkbox
+input#btn-state
+  position: absolute
+  visibility: hidden
+  height: 1px
+  width: 1px
+  left: -1px
+  top: -1px
+
+.morph
+  background-image: url(../images/about-me-logo.svg)
+  background-size: 70% 70%
+  background-repeat: no-repeat
+  background-position: center
+  background-color: #2978A0
+  border-radius: 2.5rem
+  width: 5rem
+  height: 5rem
+  margin: 50px auto
+  text-align: center
+  transition: all .3s
+  box-shadow: 1px 4px 11px rgba(0,0,0,0.5)
+  overflow: hidden
+  &:hover
+    background-color: #347FC4
+
+
+    //  show only label btn-morph-on
+.btn-morph-on
+  display: block
+  height: 100%
+  width: 100%
+  color: #FFF
+  font-weight: 700
+  line-height: 1.8em
+  font-size: 2.5em
+  cursor: pointer
+  z-index: 1001
+
+.btn-morph-off
+  position: relative
+  top: 15px
+  left: 40%
+  color: #FFF
+  display: none
+  font-size: 2.5em
+  cursor: pointer
+.morph-content
+  padding: 40px
+  padding-top: 10px
+  color: #FFF
+  // text-align: justify
+  font-size: 1.3em
+  line-height: 1.5em
+  font-weight: light
+  .headline
+    text-align: center
+
+
+#btn-state:checked + .morph
+  background-image: url(../images/about-me-logo-transparent.svg)
+  background-color: #347FC4
+  width: 500px
+  height: $about-me-height
+  border-radius: 7px
+  transition: all .3s
+  .btn-morph-on
+    display: none
+  .btn-morph-off
+    display: block
+
+@media (max-width: 1100px)
+  section.banner
+    padding: 5em 6em
+    h1
+      font-size: 3em
+    .aboutMe
+      right: 12%
+@media (max-width: 725px)
+  section.banner
+    padding: 3em 4.5em
+    .logo
+      width: 80px
+      height: 60px
+    h1
+      font-size: 2.5em
+@media (max-width: 600px)
+  section.banner
+    padding: 2em 3.5em
+    h1
+      font-size: 2em
+    .aboutMe
+      margin: 10px 0
+      right: 9%
+      top: 11%
+    .morph-content
+      padding: 20px
+      padding-top: 0
+      font-size: 1.1em
+      line-height: 1.3em
+      .headline
+        word-spacing: 5px
+
+    #btn-state:checked + .morph
+      width: 400px
+      height: 600px
+      transition: all .3s
+@media (max-width: 485px)
+  section.banner
+    padding: 1.4em 2.5em
+    .logo
+      width: 60px
+      height: 40px
+    h1
+      font-size: 1.6em
+    .aboutMe
+      top: 7%
+    #btn-state:checked + .morph
+      width: 300px
+      height: $about-me-height
+      transition: all .3s

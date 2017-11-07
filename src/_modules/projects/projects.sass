@@ -1,0 +1,238 @@
+//color variables
+$white: #ffffff
+$bg: #1A2930
+$first-project: #FCC02C
+$second-project: #FF3B3F
+$third-project: #CB87EF
+$forth-project: #4EC5C1
+
+// mixins style
+@mixin bg_img($url, $size, $position)
+  background-image: url($url)
+  background-size: $size
+  background-position: $position
+  background-repeat: no-repeat
+
+// projects styles
+section.projects
+  padding: 5em
+  background: $bg
+  .wrapper
+    display: flex
+    flex-direction: column
+    flex-flow: row wrap
+
+  .card
+    height: 450px
+    margin-bottom: 2em
+    border-radius: .35em
+    background: $white
+    overflow: hidden
+    transform: scale(1, 1)
+    box-shadow: 0 1px 2px rgba(0,0,0,0.45)
+    transition: all 0.2s ease-in-out
+    &:hover
+      transform: scale(1.01, 1.01)
+      box-shadow: 0 7px 17px rgba(0,0,0,0.75)
+
+  .card_full
+    flex-basis: 100%
+  .card_half
+    flex-basis: 48.5%
+  .card_third
+    flex-basis: 75%
+  .left
+    margin-right: 1.5%
+  .right
+    margin-left: 1.5%
+  .tall
+    height: 600px
+  .card_inner
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    height: 100%
+    padding: 8vh 60px
+    color: $white
+
+    p
+      font-size: 1em
+      font-weight: 700
+      text-transform: uppercase
+      letter-spacing: .2em
+    h2
+      font-size: 3em
+      margin: 0
+      letter-spacing: .1em
+
+  .see-online
+    margin-top: 2em
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    a.button
+      background: transparent
+      padding: 1em 1.5em
+      text-align: center
+      border: 2px solid #fff
+      border-radius: .5em
+      color: #fff
+      text-decoration: none
+      text-transform: uppercase
+      font-size: .8em
+      font-weight: 700
+      transition: all .3s ease-in-out
+      &:hover
+        border: 2px solid #343e48
+        color: #343e48
+    a.github
+      position: absolute
+      bottom: 1.5em
+      color: #343e48
+      text-decoration: none
+      margin: .5em 1em
+      text-align: center
+      &:hover
+        color: gray
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 1px
+        bottom: 0
+        left: 0
+        background-color: gray
+        visibility: hidden
+        -webkit-transform: scaleX(0)
+        transform: scaleX(0)
+        -webkit-transition: all 0.3s ease-in-out 0s
+        transition: all 0.3s ease-in-out 0s
+      &:hover:before
+        visibility: visible
+        -webkit-transform: scaleX(1)
+        transform: scaleX(1)
+
+  .yellow, .orange, .purple, .green
+    border-radius: .35em
+  .yellow
+    background: rgba($first-project, .9)
+  .orange
+    background: rgba($second-project, .9)
+  .purple
+    background: rgba($third-project, .9)
+  .green
+    background: rgba($fourth-project, .9)
+  .view_more
+    flex-basis: 25%
+    height: 450px
+    padding-left: 3em
+    display: flex
+    flex-direction: column
+    justify-content: center
+    a
+      text-decoration: none
+      &:hover
+        p
+          color: $second-project
+      p
+        font-size: 1.25em
+        font-weight: 700
+        letter-spacing: .1em
+        color: #9EACB2
+  .card_1
+    @include bg_img('../images/photo.svg', 55%, 520px -90px)
+  .card_2
+    @include bg_img('../images/currencies.svg', 120%, 2px 194px)
+  .card_3
+    @include bg_img('../images/seo-landing-pages.svg', 100%, 48px 120px)
+  .card_4
+    @include bg_img('../images/icons.png', 80%, 5px 5px)
+    background-repeat: repeat
+
+@media (max-width: 1100px)
+  section.projects
+    .card_inner
+      h2
+        font-size: 2.2em
+    .card_1
+      background-position: 420px -50px
+@media (max-width: 850px)
+  section.projects
+    .card_inner
+      h2
+        font-size: 1.75em
+    .card_1
+      background-position: 340px -30px
+@media (max-width: 725px)
+  section.projects
+    padding: 4em
+    .card
+      height: 350px
+    .view_more
+      height: 200px
+    .card_half, .card_third, .view_more
+      flex-basis: 100%
+    .left
+      margin-right: 0px
+    .right
+      margin-left: 0px
+    .card_1
+      background-position: 300px -30px
+    .card_2, .card_3
+      background-size: 70%
+      background-position: 145px 50px
+
+@media (max-width: 650px)
+  section.projects
+    padding: 3em
+    .card
+      height: 250px
+      //take off the scalling
+      &:hover
+        transform: scale(1, 1)
+    .view_more
+      height: 100px
+    .card_inner
+      padding: 4vh 60px
+      h2
+        font-size: 1em
+      // .see-online
+      //   a.github
+      //     bottom: .5em
+      .see-online
+        margin-top: 0
+        // justify-content: flex-start
+        a.button
+          padding: .8em 1.2em
+        a.github
+          margin: 1em 2.7em
+          bottom: 2em
+          left: 1em
+@media (max-width: 480px)
+  section.projects
+    padding: 1.6em
+    .card
+      margin-bottom: 1em
+    .view_more
+      padding-left: 30px
+      a, p
+        font-size: .9em
+    .card_inner
+      padding: 4vh 30px
+      p.category
+        font-size: .8em
+      h2
+        margin-bottom: 15px
+
+    .card_1
+      background-position: 170px -20px
+    .card_2, .card_3
+      background-position: 95px 50px
+@media (max-width: 400px)
+  section.projects
+    .card
+      .card_inner
+        .see-online
+          a.github
+            max-width: 82px
+            bottom: 1em
